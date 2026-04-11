@@ -9,6 +9,8 @@ import {
 } from '../data/site'
 import { createRevealProps, heroReveal } from '../lib/motion'
 
+const iconsSpritePath = `${import.meta.env.BASE_URL}icons.svg`
+
 export function HomePage() {
   return (
     <main className="page">
@@ -102,15 +104,15 @@ export function HomePage() {
               key={link.name}
               className="social-card"
               href={link.href}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span className="social-card__icon" aria-hidden="true">
-                <svg className="social-card__icon-mark" aria-hidden="true">
-                  <use href={`/icons.svg#${link.icon}`} />
-                </svg>
-              </span>
-              <strong>{link.name}</strong>
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span className="social-card__icon" aria-hidden="true">
+                  <svg className="social-card__icon-mark" aria-hidden="true">
+                    <use href={`${iconsSpritePath}#${link.icon}`} />
+                  </svg>
+                </span>
+                <strong>{link.name}</strong>
               <span>{link.description}</span>
             </a>
           ))}
