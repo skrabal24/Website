@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')!).render(
         <App />
       </BrowserRouter>
     ) : (
-      <HashRouter>
+      <HashRouter basename="/Website/">
         <App />
       </HashRouter>
     )}
