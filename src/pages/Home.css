@@ -204,6 +204,18 @@
 
 .track-card .waveform-player-wrapper {
   width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.track-card .waveform-player-wrapper canvas,
+.track-card .waveform-player-wrapper svg {
+  filter: drop-shadow(0 0 6px rgba(255, 0, 255, 0.5));
+}
+
+.track-card:hover .waveform-player-wrapper canvas,
+.track-card:hover .waveform-player-wrapper svg {
+  filter: drop-shadow(0 0 12px rgba(255, 0, 255, 0.8));
 }
 
 .track-card h3 {

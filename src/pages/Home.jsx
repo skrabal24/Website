@@ -47,9 +47,9 @@ export default function Home() {
                   height={70}
                   barWidth={2}
                   barSpacing={1}
-                  waveformColor="rgba(0, 240, 255, 0.25)"
-                  progressColor="rgba(0, 240, 255, 0.9)"
-                  buttonColor="#00f0ff"
+                  waveformColor="rgba(255, 0, 255, 0.2)"
+                  progressColor="rgba(255, 0, 255, 1)"
+                  buttonColor="#ff00ff"
                   showPlaybackSpeed
                 />
               </div>
