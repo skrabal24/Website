@@ -1,11 +1,12 @@
-import { Play, Volume2, Zap } from 'lucide-react'
+import { Play, Zap } from 'lucide-react'
+import AudioPlayer from '../components/AudioPlayer'
 import './Home.css'
 
 export default function Home() {
   const featuredTracks = [
-    { title: 'DIGITAL DREAMS', artist: 'Cyberpower', duration: '3:45' },
-    { title: 'NEON NIGHTS', artist: 'Cyberpower', duration: '4:12' },
-    { title: 'CYBER PULSE', artist: 'Cyberpower', duration: '3:58' }
+    { title: 'DIGITAL DREAMS', artist: 'Cyberpower', url: '/audio/digital-dreams.mp3' },
+    { title: 'NEON NIGHTS', artist: 'Cyberpower', url: '/audio/neon-nights.mp3' },
+    { title: 'CYBER PULSE', artist: 'Cyberpower', url: '/audio/cyber-pulse.mp3' },
   ]
 
   return (
@@ -38,15 +39,19 @@ export default function Home() {
           <div className="tracks-grid">
             {featuredTracks.map((track, idx) => (
               <div key={idx} className="track-card">
-                <div className="track-icon">
-                  <Volume2 size={32} />
-                </div>
-                <h3>{track.title}</h3>
-                <p>{track.artist}</p>
-                <p className="duration">{track.duration}</p>
-                <button className="play-btn">
-                  <Play size={20} /> PLAY
-                </button>
+                <AudioPlayer
+                  url={track.url}
+                  title={track.title}
+                  subtitle={track.artist}
+                  waveformStyle="mirror"
+                  height={70}
+                  barWidth={2}
+                  barSpacing={1}
+                  waveformColor="rgba(0, 240, 255, 0.25)"
+                  progressColor="rgba(0, 240, 255, 0.9)"
+                  buttonColor="#00f0ff"
+                  showPlaybackSpeed
+                />
               </div>
             ))}
           </div>
