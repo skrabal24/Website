@@ -1,0 +1,101 @@
+import { Play, Volume2, Zap } from 'lucide-react'
+import './Home.css'
+
+export default function Home() {
+  const featuredTracks = [
+    { title: 'DIGITAL DREAMS', artist: 'Cyberpower', duration: '3:45' },
+    { title: 'NEON NIGHTS', artist: 'Cyberpower', duration: '4:12' },
+    { title: 'CYBER PULSE', artist: 'Cyberpower', duration: '3:58' }
+  ]
+
+  return (
+    <div className="home">
+      <section className="hero">
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1 className="hero-title">CYBERPOWER</h1>
+            <p className="hero-subtitle">Where Technology Meets Sound</p>
+            <div className="hero-buttons">
+              <button className="btn btn-primary">
+                <Play size={20} /> PLAY LATEST
+              </button>
+              <button className="btn btn-secondary">
+                <Zap size={20} /> TOUR DATES
+              </button>
+            </div>
+          </div>
+          <div className="hero-visual">
+            <div className="glowing-circle circle-1"></div>
+            <div className="glowing-circle circle-2"></div>
+            <div className="glowing-circle circle-3"></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="featured-tracks">
+        <div className="container">
+          <h2>FEATURED TRACKS</h2>
+          <div className="tracks-grid">
+            {featuredTracks.map((track, idx) => (
+              <div key={idx} className="track-card">
+                <div className="track-icon">
+                  <Volume2 size={32} />
+                </div>
+                <h3>{track.title}</h3>
+                <p>{track.artist}</p>
+                <p className="duration">{track.duration}</p>
+                <button className="play-btn">
+                  <Play size={20} /> PLAY
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="about-preview">
+        <div className="container">
+          <div className="about-grid">
+            <div className="about-text">
+              <h2>ABOUT THE BAND</h2>
+              <p>
+                Cyberpower is a futuristic electronic rock band pushing the boundaries of sound and technology.
+                Founded in 2020, we blend synthesizers, live instruments, and digital innovation to create
+                an immersive sonic experience that transcends traditional genre limitations.
+              </p>
+              <p>
+                Our mission is to explore the intersection of human creativity and technological possibility,
+                creating music that speaks to the digital age while maintaining authentic emotional depth.
+              </p>
+              <button className="btn btn-primary">LEARN MORE</button>
+            </div>
+            <div className="about-visual">
+              <div className="cyber-grid"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="upcoming-shows">
+        <div className="container">
+          <h2>UPCOMING SHOWS</h2>
+          <div className="shows-list">
+            {[1, 2, 3].map((_, idx) => (
+              <div key={idx} className="show-item">
+                <div className="show-date">
+                  <span className="month">MAR</span>
+                  <span className="day">{15 + idx * 5}</span>
+                </div>
+                <div className="show-info">
+                  <h3>Cyber Festival {idx + 1}</h3>
+                  <p>Digital Arena, Cyber City</p>
+                </div>
+                <button className="btn btn-secondary btn-sm">GET TICKETS</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
