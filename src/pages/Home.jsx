@@ -4,7 +4,7 @@ import './Home.css'
 
 export default function Home() {
   const featuredTracks = [
-    { title: 'BEAM ME UP (KILL MODE)', artist: 'Cazzette', url: '/audio/cazzette%20%20%20beam%20me%20up%20(kill%20mode)%20(radio%20edit)%20-%20[MP3JUICES.COM].mp3' },
+    { title: 'BEAM ME UP (KILL MODE)', artist: 'Cazzette', url: '/audio/beam-me-up-kill-mode.mp3' },
     { title: 'DIGITAL DREAMS', artist: 'Cyberpower', url: '/audio/digital-dreams.mp3' },
     { title: 'NEON NIGHTS', artist: 'Cyberpower', url: '/audio/neon-nights.mp3' },
   ]
