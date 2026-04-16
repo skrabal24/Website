@@ -3,7 +3,46 @@
   flex-direction: column;
   min-height: 100vh;
   position: relative;
+  z-index: 1;
+}
+
+/* Scanline overlay — very subtle horizontal lines */
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Perspective grid floor */
+.app::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: -20%;
+  width: 140%;
+  height: 40vh;
+  background:
+    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(400px) rotateX(55deg);
+  transform-origin: bottom center;
+  pointer-events: none;
   z-index: 0;
+  mask-image: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
 }
 
 .main-content {
@@ -15,5 +54,8 @@
 @media (max-width: 768px) {
   .app {
     min-height: auto;
+  }
+  .app::after {
+    display: none;
   }
 }

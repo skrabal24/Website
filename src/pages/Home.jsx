@@ -1,4 +1,7 @@
-import { Play, Zap } from 'lucide-react'
+import { Play, Zap, Disc3, Radio, Users, Calendar } from 'lucide-react'
+import BackgroundScene from '../components/BackgroundScene'
+import SectionBadge from '../components/SectionBadge'
+import StatCard from '../components/StatCard'
 import AudioPlayer from '../components/AudioPlayer'
 import './Home.css'
 
@@ -9,13 +12,32 @@ export default function Home() {
     { title: 'NEON NIGHTS', artist: 'Cyberpower', url: import.meta.env.BASE_URL + 'audio/neon-nights.mp3' },
   ]
 
+  const stats = [
+    { icon: Disc3, value: '3', label: 'Albums' },
+    { icon: Radio, value: '47', label: 'Singles' },
+    { icon: Users, value: '2M+', label: 'Listeners' },
+    { icon: Calendar, value: '120+', label: 'Shows' },
+  ]
+
   return (
     <div className="home">
+      <BackgroundScene />
+
       <section className="hero">
+        <div className="hero-grid-overlay"></div>
         <div className="hero-content">
           <div className="hero-text">
-            <h1 className="hero-title">CYBERPOWER</h1>
+            <SectionBadge icon={Radio} text="Now Streaming" />
+            <h1 className="hero-title">
+              <span className="hero-title__line">CYBER</span>
+              <span className="hero-title__line hero-title__line--accent">POWER</span>
+            </h1>
             <p className="hero-subtitle">Where Technology Meets Sound</p>
+            <div className="hero-stats">
+              {stats.map((s, i) => (
+                <StatCard key={i} icon={s.icon} value={s.value} label={s.label} />
+              ))}
+            </div>
             <div className="hero-buttons">
               <button className="btn btn-primary">
                 <Play size={20} /> PLAY LATEST
@@ -26,15 +48,17 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="glowing-circle circle-1"></div>
-            <div className="glowing-circle circle-2"></div>
-            <div className="glowing-circle circle-3"></div>
+            <div className="hero-ring hero-ring--1"></div>
+            <div className="hero-ring hero-ring--2"></div>
+            <div className="hero-ring hero-ring--3"></div>
+            <div className="hero-core"></div>
           </div>
         </div>
       </section>
 
       <section className="featured-tracks">
         <div className="container">
+          <SectionBadge icon={Disc3} text="Latest Releases" />
           <h2>FEATURED TRACKS</h2>
           <div className="tracks-grid">
             {featuredTracks.map((track, idx) => (
@@ -62,6 +86,7 @@ export default function Home() {
         <div className="container">
           <div className="about-grid">
             <div className="about-text">
+              <SectionBadge icon={Users} text="The Collective" />
               <h2>ABOUT THE BAND</h2>
               <p>
                 Cyberpower is a futuristic electronic rock band pushing the boundaries of sound and technology.
@@ -76,6 +101,7 @@ export default function Home() {
             </div>
             <div className="about-visual">
               <div className="cyber-grid"></div>
+              <div className="cyber-grid-overlay"></div>
             </div>
           </div>
         </div>
@@ -83,6 +109,7 @@ export default function Home() {
 
       <section className="upcoming-shows">
         <div className="container">
+          <SectionBadge icon={Calendar} text="On Tour" />
           <h2>UPCOMING SHOWS</h2>
           <div className="shows-list">
             {[1, 2, 3].map((_, idx) => (

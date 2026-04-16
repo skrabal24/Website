@@ -20,6 +20,18 @@
   --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.5);
   --glow-magenta: 0 0 20px rgba(255, 0, 255, 0.5);
   --glow-yellow: 0 0 20px rgba(240, 255, 0, 0.5);
+
+  /* Page-level aliases (used by Home, LiveDates, etc.) */
+  --primary: #00ff88;
+  --secondary: #00d4ff;
+  --accent: #ff00ff;
+  --card-bg: #1a1f3a;
+  --border: #2a3f5f;
+  --dark-bg: #0a0a0f;
+
+  /* Depth / surface */
+  --surface-glass: rgba(10, 10, 15, 0.7);
+  --surface-panel: rgba(26, 31, 58, 0.6);
 }
 
 * {
@@ -28,37 +40,58 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html, body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
 }
 
 body {
-  background: linear-gradient(135deg, #1a0033 0%, #0a0a1f 50%, #001a33 100%);
+  background: var(--bg-primary);
   color: var(--text-primary);
   font-family: 'Inter', 'Roboto', sans-serif;
   line-height: 1.6;
   position: relative;
+  overflow-x: hidden;
 }
 
+/* Ambient gradient orbs behind content */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.1) 2px,
-    rgba(0, 0, 0, 0.1) 4px
-  );
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 70%);
   pointer-events: none;
-  z-index: 9999;
-  animation: scanlines 10s linear infinite;
+  z-index: 0;
+  animation: ambientFloat1 20s ease-in-out infinite;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  right: -10%;
+  width: 50vw;
+  height: 50vh;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: ambientFloat2 25s ease-in-out infinite;
+}
+
+@keyframes ambientFloat1 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(10vw, 5vh); }
+  66% { transform: translate(-5vw, 10vh); }
+}
+
+@keyframes ambientFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-8vw, -6vh); }
+  66% { transform: translate(5vw, -3vh); }
 }
 
 @keyframes scanlines {
