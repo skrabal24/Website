@@ -13,7 +13,7 @@ import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Website">
       <div className="app">
         <Header />
         <main className="main-content">
